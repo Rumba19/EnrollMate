@@ -4,10 +4,13 @@ using EnrollMate.Api.Endpoints;
 using EnrollMate.Data.Interfaces;
 using EnrollMate.Data.Mock;
 using Microsoft.SemanticKernel;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.ConfigureHttpJsonOptions(o =>
+    o.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
 
 // ── In-memory seed data ───────────────────────────────────────────────────────
 var courses = SeedData.Courses();
@@ -38,7 +41,10 @@ builder.Services.AddScoped<AgentOrchestrator>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
+{
     app.MapOpenApi();
+    app.MapScalarApiReference();
+}
 
 app.UseHttpsRedirection();
 
