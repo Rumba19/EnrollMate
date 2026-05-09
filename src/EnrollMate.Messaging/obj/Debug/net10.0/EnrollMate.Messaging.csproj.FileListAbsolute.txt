@@ -1,0 +1,12 @@
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/bin/Debug/net10.0/EnrollMate.Messaging.deps.json
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/bin/Debug/net10.0/EnrollMate.Messaging.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/bin/Debug/net10.0/EnrollMate.Messaging.pdb
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.AssemblyInfoInputs.cache
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.AssemblyInfo.cs
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.csproj.CoreCompileInputs.cache
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.sourcelink.json
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/refint/EnrollMate.Messaging.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/EnrollMate.Messaging.pdb
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Messaging/obj/Debug/net10.0/ref/EnrollMate.Messaging.dll

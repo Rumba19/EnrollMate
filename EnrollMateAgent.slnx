@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EnrollMate.Agent/EnrollMate.Agent.csproj" />
+    <Project Path="src/EnrollMate.Api/EnrollMate.Api.csproj" />
+    <Project Path="src/EnrollMate.Data/EnrollMate.Data.csproj" />
+    <Project Path="src/EnrollMate.Messaging/EnrollMate.Messaging.csproj" />
+    <Project Path="src/EnrollMate.Shared/EnrollMate.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EnrollMate.Agent.Tests/EnrollMate.Agent.Tests.csproj" />
+  </Folder>
+</Solution>
