@@ -16,3 +16,4 @@
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Agent/bin/Debug/net10.0/EnrollMate.Data.pdb
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Agent/bin/Debug/net10.0/EnrollMate.Shared.pdb
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Agent/obj/Debug/net10.0/EnrollMa.406B5430.Up2Date
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Agent/bin/Debug/net10.0/Prompts/SystemPrompt.txt

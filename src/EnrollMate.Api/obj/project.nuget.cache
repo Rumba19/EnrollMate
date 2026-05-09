@@ -1,11 +1,28 @@
 {
   "version": 2,
-  "dgSpecHash": "ifIty+ULs3w=",
+  "dgSpecHash": "cfGdX/5dQLA=",
   "success": true,
   "projectFilePath": "/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/EnrollMate.Api.csproj",
   "expectedPackageFiles": [
+    "/Users/bikramrumba/.nuget/packages/azure.ai.openai/2.9.0-beta.1/azure.ai.openai.2.9.0-beta.1.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/azure.core/1.51.1/azure.core.1.51.1.nupkg.sha512",
     "/Users/bikramrumba/.nuget/packages/microsoft.aspnetcore.openapi/10.0.2/microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
-    "/Users/bikramrumba/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+    "/Users/bikramrumba/.nuget/packages/microsoft.bcl.asyncinterfaces/10.0.2/microsoft.bcl.asyncinterfaces.10.0.2.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.bcl.hashcode/1.1.1/microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.extensions.ai/10.5.0/microsoft.extensions.ai.10.5.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.extensions.ai.abstractions/10.5.0/microsoft.extensions.ai.abstractions.10.5.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.extensions.ai.openai/10.5.0/microsoft.extensions.ai.openai.10.5.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.extensions.vectordata.abstractions/10.1.0/microsoft.extensions.vectordata.abstractions.10.1.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.semantickernel/1.75.0/microsoft.semantickernel.1.75.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.semantickernel.abstractions/1.75.0/microsoft.semantickernel.abstractions.1.75.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.semantickernel.connectors.azureopenai/1.75.0/microsoft.semantickernel.connectors.azureopenai.1.75.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.semantickernel.connectors.openai/1.75.0/microsoft.semantickernel.connectors.openai.1.75.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/microsoft.semantickernel.core/1.75.0/microsoft.semantickernel.core.1.75.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/openai/2.10.0/openai.2.10.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/system.clientmodel/1.10.0/system.clientmodel.1.10.0.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/system.memory.data/10.0.3/system.memory.data.10.0.3.nupkg.sha512",
+    "/Users/bikramrumba/.nuget/packages/system.numerics.tensors/10.0.6/system.numerics.tensors.10.0.6.nupkg.sha512"
   ],
   "logs": []
 }

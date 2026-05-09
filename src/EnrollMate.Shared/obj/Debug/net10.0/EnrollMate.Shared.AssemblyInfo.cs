@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EnrollMate.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4c672ba9f9f464a528ffc247b6b2296e8b8e734")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f39f1c860f79fdb6f80eb0014b62be099dea2494")]
 [assembly: System.Reflection.AssemblyProductAttribute("EnrollMate.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EnrollMate.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

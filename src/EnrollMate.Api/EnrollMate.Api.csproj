@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EnrollMate.Agent\EnrollMate.Agent.csproj" />
     <ProjectReference Include="..\EnrollMate.Data\EnrollMate.Data.csproj" />
   </ItemGroup>
 

@@ -14,4 +14,10 @@
     <ProjectReference Include="..\EnrollMate.Data\EnrollMate.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Prompts\SystemPrompt.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
