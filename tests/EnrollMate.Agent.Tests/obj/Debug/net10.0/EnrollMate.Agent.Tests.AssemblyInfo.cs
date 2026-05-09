@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EnrollMate.Agent.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f39f1c860f79fdb6f80eb0014b62be099dea2494")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bbb8072843fad9a427c6eee30fa97b9cef580de")]
 [assembly: System.Reflection.AssemblyProductAttribute("EnrollMate.Agent.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EnrollMate.Agent.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

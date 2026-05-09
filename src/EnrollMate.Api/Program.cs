@@ -1,5 +1,6 @@
 using EnrollMate.Agent;
 using EnrollMate.Agent.Tools;
+using EnrollMate.Api.Endpoints;
 using EnrollMate.Data.Interfaces;
 using EnrollMate.Data.Mock;
 using Microsoft.SemanticKernel;
@@ -40,5 +41,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 
 app.UseHttpsRedirection();
+
+ApplicationsEndpoints.Map(app);
+AgentEndpoints.Map(app);
+NotificationsEndpoints.Map(app);
 
 app.Run();
