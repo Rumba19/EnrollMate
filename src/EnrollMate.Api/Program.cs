@@ -1,41 +1,30 @@
+using EnrollMate.Data.Interfaces;
+using EnrollMate.Data.Mock;
+using EnrollMate.Shared.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Seed shared in-memory data
+var courses = SeedData.Courses();
+var applications = SeedData.Applications(courses);
+var documents = SeedData.Documents(applications);
+
+// Register as singletons so all repositories share the same lists
+builder.Services.AddSingleton(courses);
+builder.Services.AddSingleton(applications);
+builder.Services.AddSingleton(documents);
+
+builder.Services.AddSingleton<ICourseRepository, MockCourseRepository>();
+builder.Services.AddSingleton<IApplicationRepository, MockApplicationRepository>();
+builder.Services.AddSingleton<IDocumentRepository, MockDocumentRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
     app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

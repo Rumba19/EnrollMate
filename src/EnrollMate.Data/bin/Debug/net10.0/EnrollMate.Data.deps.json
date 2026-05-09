@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {
       "EnrollMate.Data/1.0.0": {
+        "dependencies": {
+          "EnrollMate.Shared": "1.0.0"
+        },
         "runtime": {
           "EnrollMate.Data.dll": {}
+        }
+      },
+      "EnrollMate.Shared/1.0.0": {
+        "runtime": {
+          "EnrollMate.Shared.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "EnrollMate.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EnrollMate.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

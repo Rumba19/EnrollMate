@@ -1,3 +1,6 @@
+/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.csproj.AssemblyReference.cache
+/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.AssemblyInfoInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/xunit.abstractions.dll
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/xunit.runner.visualstudio.testadapter.dll
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/EnrollMate.Agent.Tests.deps.json
@@ -82,9 +85,6 @@
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.csproj.AssemblyReference.cache
-/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.GeneratedMSBuildEditorConfig.editorconfig
-/Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.AssemblyInfoInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.AssemblyInfo.cs
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.csproj.CoreCompileInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/tests/EnrollMate.Agent.Tests/obj/Debug/net10.0/EnrollMate.Agent.Tests.sourcelink.json

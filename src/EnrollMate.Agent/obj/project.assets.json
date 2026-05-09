@@ -478,6 +478,29 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "EnrollMate.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "EnrollMate.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EnrollMate.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnrollMate.Data.dll": {}
+        }
+      },
+      "EnrollMate.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/EnrollMate.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnrollMate.Shared.dll": {}
+        }
       }
     }
   },
@@ -1226,10 +1249,21 @@
         "system.numerics.tensors.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "EnrollMate.Data/1.0.0": {
+      "type": "project",
+      "path": "../EnrollMate.Data/EnrollMate.Data.csproj",
+      "msbuildProject": "../EnrollMate.Data/EnrollMate.Data.csproj"
+    },
+    "EnrollMate.Shared/1.0.0": {
+      "type": "project",
+      "path": "../EnrollMate.Shared/EnrollMate.Shared.csproj",
+      "msbuildProject": "../EnrollMate.Shared/EnrollMate.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "EnrollMate.Data >= 1.0.0",
       "Microsoft.SemanticKernel >= 1.75.0"
     ]
   },
@@ -1258,7 +1292,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Data/EnrollMate.Data.csproj": {
+              "projectPath": "/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Data/EnrollMate.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

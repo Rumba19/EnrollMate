@@ -1,6 +1,0 @@
-﻿namespace EnrollMate.Shared;
-
-public class Class1
-{
-
-}

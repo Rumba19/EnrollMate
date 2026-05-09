@@ -1,3 +1,7 @@
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.csproj.AssemblyReference.cache
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/rpswa.dswa.cache.json
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.AssemblyInfoInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/appsettings.Development.json
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/appsettings.json
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Api.staticwebassets.endpoints.json
@@ -8,10 +12,6 @@
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Api.pdb
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/Microsoft.OpenApi.dll
-/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.csproj.AssemblyReference.cache
-/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/rpswa.dswa.cache.json
-/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.GeneratedMSBuildEditorConfig.editorconfig
-/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.AssemblyInfoInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.AssemblyInfo.cs
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.csproj.CoreCompileInputs.cache
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.MvcApplicationPartsAssemblyInfo.cs
@@ -32,3 +32,7 @@
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.pdb
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/EnrollMate.Api.genruntimeconfig.cache
 /Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/obj/Debug/net10.0/ref/EnrollMate.Api.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Data.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Shared.dll
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Data.pdb
+/Users/bikramrumba/FreeLance/EnrollMate/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Shared.pdb
