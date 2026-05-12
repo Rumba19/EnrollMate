@@ -7,8 +7,7 @@ namespace EnrollMate.Agent.Tools;
 
 public class DataTools(
     IApplicationRepository applications,
-    ICourseRepository courses,
-    IDocumentRepository documents)
+    ISchoolRepository schools)
 {
     [KernelFunction]
     [Description("Gets the full enrollment application record by ID.")]
@@ -36,53 +35,44 @@ public class DataTools(
                 application.ParentFullName,
                 application.ParentEmail
             },
-            application.RequestedCourseIds,
+            application.RequestedSchoolIds,
             application.Status,
-            application.Semester,
-            application.Year,
+            application.IntakeYear,
             application.FollowUpCount,
             application.FollowUpsExhausted
         });
     }
 
     [KernelFunction]
-    [Description("Checks whether a student is eligible for a course — validates year level, prerequisites, and zone.")]
-    public async Task<string> CheckEligibility(string applicationId, string courseId)
+    [Description("Checks whether a student is eligible to enroll at a school — validates year level and zone.")]
+    public async Task<string> CheckEligibility(string applicationId, string schoolId)
     {
         var application = await applications.GetByIdAsync(applicationId);
         if (application is null)
             return $"Application '{applicationId}' not found.";
 
-        var course = await courses.GetByIdAsync(courseId);
-        if (course is null)
-            return $"Course '{courseId}' not found.";
+        var school = await schools.GetByIdAsync(schoolId);
+        if (school is null)
+            return $"School '{schoolId}' not found.";
 
         var reasons = new List<string>();
 
-        if (!course.EligibleYearLevels.Contains(application.Student.YearLevel))
-            reasons.Add($"Student is Year {application.Student.YearLevel} but course requires: {string.Join(", ", course.EligibleYearLevels)}.");
+        if (!school.ServesYearLevel(application.Student.YearLevel))
+            reasons.Add($"Student is Year {application.Student.YearLevel} but {school.Name} serves: {string.Join(", ", school.YearLevels)}.");
 
-        if (course.HasPrerequisites)
-        {
-            var unmet = course.PrerequisiteCourseIds
-                .Except(application.ConfirmedCourseIds)
-                .ToList();
-
-            if (unmet.Count > 0)
-                reasons.Add($"Missing prerequisites: {string.Join(", ", unmet)}.");
-        }
+        if (!school.IsInZone(application.Student.Suburb))
+            reasons.Add($"Student's suburb '{application.Student.Suburb}' is not in the zone for {school.Name}. Zone suburbs: {string.Join(", ", school.ZoneSuburbs)}.");
 
         if (reasons.Count > 0)
             return $"Not eligible: {string.Join(" ", reasons)}";
 
-        return $"Eligible. Course '{course.Name}' accepts Year {application.Student.YearLevel}.";
+        return $"Eligible. {school.Name} serves Year {application.Student.YearLevel} and '{application.Student.Suburb}' is in zone.";
     }
 
     [KernelFunction]
     [Description("Returns the list of required documents for a given year level.")]
     public Task<string> GetRequiredDocuments(int yearLevel)
     {
-        // Standard required documents for all year levels
         var required = new List<string>
         {
             "Birth Certificate",
@@ -90,12 +80,7 @@ public class DataTools(
             "Proof of Address"
         };
 
-        // Year 7 entry requires transcript from primary school
-        if (yearLevel == 7)
-            required.Add("Previous School Transcript");
-
-        // Years 10–12 always require transcript
-        if (yearLevel >= 10)
+        if (yearLevel >= 7)
             required.Add("Previous School Transcript");
 
         return Task.FromResult(
@@ -122,26 +107,27 @@ public class DataTools(
     }
 
     [KernelFunction]
-    [Description("Returns availability and capacity info for a course.")]
-    public async Task<string> GetCourseAvailability(string courseId)
+    [Description("Returns availability and capacity info for a school.")]
+    public async Task<string> GetSchoolAvailability(string schoolId)
     {
-        var course = await courses.GetByIdAsync(courseId);
-        if (course is null)
-            return $"Course '{courseId}' not found.";
+        var school = await schools.GetByIdAsync(schoolId);
+        if (school is null)
+            return $"School '{schoolId}' not found.";
 
         return JsonSerializer.Serialize(new
         {
-            course.Id,
-            course.Name,
-            course.Code,
-            course.Capacity,
-            course.EnrolledCount,
-            course.AvailablePlaces,
-            course.HasAvailablePlaces,
-            course.WaitlistedCount,
-            course.Schedule,
-            course.TeacherName,
-            course.Room
+            school.Id,
+            school.Name,
+            school.Address,
+            school.Suburb,
+            school.YearLevels,
+            school.Capacity,
+            school.EnrolledCount,
+            school.AvailablePlaces,
+            school.HasAvailablePlaces,
+            school.WaitlistedCount,
+            school.PrincipalName,
+            school.ContactEmail
         });
     }
 }

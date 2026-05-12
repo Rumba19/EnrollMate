@@ -8,7 +8,7 @@ namespace EnrollMate.Agent.Tools;
 
 public class ActionTools(
     IApplicationRepository applications,
-    ICourseRepository courses)
+    ISchoolRepository schools)
 {
     [KernelFunction]
     [Description("Sends a personalised email to the parent via AWS SES. Returns success or failure.")]
@@ -18,7 +18,6 @@ public class ActionTools(
         if (application is null)
             return $"Application '{applicationId}' not found — email not sent.";
 
-        // Mock: log the action instead of calling real SES
         var action = new AgentAction
         {
             ApplicationId = applicationId,
@@ -62,30 +61,30 @@ public class ActionTools(
     }
 
     [KernelFunction]
-    [Description("Confirms enrollment for a student in a course. Updates course enrolled count and application confirmed courses.")]
-    public async Task<string> EnrollStudent(string applicationId, string courseId)
+    [Description("Confirms enrollment for a student at a school. Updates the school's enrolled count and the application's confirmed schools.")]
+    public async Task<string> EnrollStudent(string applicationId, string schoolId)
     {
         var application = await applications.GetByIdAsync(applicationId);
         if (application is null)
             return $"Application '{applicationId}' not found.";
 
-        var course = await courses.GetByIdAsync(courseId);
-        if (course is null)
-            return $"Course '{courseId}' not found.";
+        var school = await schools.GetByIdAsync(schoolId);
+        if (school is null)
+            return $"School '{schoolId}' not found.";
 
-        if (!course.HasAvailablePlaces)
-            return $"Course '{course.Name}' is full — cannot enroll. Use waitlist instead.";
+        if (!school.HasAvailablePlaces)
+            return $"'{school.Name}' is at full capacity — cannot enroll. Use PlaceOnWaitlist instead.";
 
-        if (!application.ConfirmedCourseIds.Contains(courseId))
-            application.ConfirmedCourseIds.Add(courseId);
+        if (!application.ConfirmedSchoolIds.Contains(schoolId))
+            application.ConfirmedSchoolIds.Add(schoolId);
 
-        await courses.IncrementEnrolledCountAsync(courseId);
+        await schools.IncrementEnrolledCountAsync(schoolId);
 
         var action = new AgentAction
         {
             ApplicationId = applicationId,
             Type = AgentActionType.ConfirmedEnrollment,
-            Description = $"Student enrolled in {course.Name} ({course.Code}).",
+            Description = $"Enrollment confirmed at {school.Name}.",
             ToolName = "EnrollStudent",
             ToolResult = "Enrolled"
         };
@@ -93,39 +92,39 @@ public class ActionTools(
         application.AgentLog.Add(action);
         await applications.UpdateAsync(application);
 
-        return $"Student enrolled in '{course.Name}'. Available places remaining: {course.AvailablePlaces - 1}.";
+        return $"Student enrolled at '{school.Name}'. Available places remaining: {school.AvailablePlaces - 1}.";
     }
 
     [KernelFunction]
-    [Description("Places a student on the waitlist for a full course.")]
-    public async Task<string> PlaceOnWaitlist(string applicationId, string courseId)
+    [Description("Places a student on the waitlist at a school that is currently at full capacity.")]
+    public async Task<string> PlaceOnWaitlist(string applicationId, string schoolId)
     {
         var application = await applications.GetByIdAsync(applicationId);
         if (application is null)
             return $"Application '{applicationId}' not found.";
 
-        var course = await courses.GetByIdAsync(courseId);
-        if (course is null)
-            return $"Course '{courseId}' not found.";
+        var school = await schools.GetByIdAsync(schoolId);
+        if (school is null)
+            return $"School '{schoolId}' not found.";
 
-        if (!application.WaitlistedCourseIds.Contains(courseId))
-            application.WaitlistedCourseIds.Add(courseId);
+        if (!application.WaitlistedSchoolIds.Contains(schoolId))
+            application.WaitlistedSchoolIds.Add(schoolId);
 
-        await courses.IncrementWaitlistedCountAsync(courseId);
+        await schools.IncrementWaitlistedCountAsync(schoolId);
 
         var action = new AgentAction
         {
             ApplicationId = applicationId,
             Type = AgentActionType.PlacedOnWaitlist,
-            Description = $"Student placed on waitlist for {course.Name} ({course.Code}).",
+            Description = $"Student placed on waitlist at {school.Name}.",
             ToolName = "PlaceOnWaitlist",
-            ToolResult = $"WaitlistPosition:{course.WaitlistedCount + 1}"
+            ToolResult = $"WaitlistPosition:{school.WaitlistedCount + 1}"
         };
 
         application.AgentLog.Add(action);
         await applications.UpdateAsync(application);
 
-        return $"Student placed on waitlist for '{course.Name}'. Waitlist position: {course.WaitlistedCount + 1}.";
+        return $"Student placed on waitlist at '{school.Name}'. Waitlist position: {school.WaitlistedCount + 1}.";
     }
 
     [KernelFunction]
@@ -152,12 +151,11 @@ public class ActionTools(
         application.AgentLog.Add(action);
         await applications.UpdateAsync(application);
 
-        // Mock: real implementation would publish to SNS
-        return $"Staff notification created for application '{applicationId}'. Summary: {summary}";
+        return $"Staff notification created for application '{applicationId}'.";
     }
 
     [KernelFunction]
-    [Description("Schedules a follow-up action for an application after a delay. Used when waiting for parent to upload documents.")]
+    [Description("Schedules a follow-up action for an application after a delay. Used when waiting for the parent to upload missing documents.")]
     public async Task<string> ScheduleFollowUp(string applicationId, int delayHours)
     {
         var application = await applications.GetByIdAsync(applicationId);
@@ -178,7 +176,6 @@ public class ActionTools(
         application.AgentLog.Add(action);
         await applications.UpdateAsync(application);
 
-        // Mock: real implementation would send a delayed message to SQS
-        return $"Follow-up scheduled in {delayHours} hours. This is attempt {application.FollowUpCount} of {application.MaxFollowUps}.";
+        return $"Follow-up scheduled in {delayHours} hours. Attempt {application.FollowUpCount} of {application.MaxFollowUps}.";
     }
 }

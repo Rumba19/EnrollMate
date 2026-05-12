@@ -17,15 +17,13 @@ public static class ApplicationsEndpoints
     private static async Task<IResult> SubmitApplication(
         SubmitApplicationRequest request,
         IApplicationRepository applications,
-        IDocumentRepository documents,
-        ICourseRepository courses)
+        ISchoolRepository schools)
     {
-        // Validate requested courses exist
-        foreach (var courseId in request.RequestedCourseIds)
+        foreach (var schoolId in request.RequestedSchoolIds)
         {
-            var course = await courses.GetByIdAsync(courseId);
-            if (course is null)
-                return Results.BadRequest($"Course '{courseId}' not found.");
+            var school = await schools.GetByIdAsync(schoolId);
+            if (school is null)
+                return Results.BadRequest($"School '{schoolId}' not found.");
         }
 
         var applicationId = Guid.NewGuid().ToString();
@@ -49,9 +47,8 @@ public static class ApplicationsEndpoints
                 Postcode = request.StudentPostcode,
                 SpecialRequirements = request.StudentSpecialRequirements
             },
-            RequestedCourseIds = request.RequestedCourseIds,
-            Semester = request.Semester,
-            Year = request.Year,
+            RequestedSchoolIds = request.RequestedSchoolIds,
+            IntakeYear = request.IntakeYear,
             Status = ApplicationStatus.Submitted
         };
 
@@ -63,7 +60,8 @@ public static class ApplicationsEndpoints
             application.Status,
             application.Student.FullName,
             application.ParentEmail,
-            application.RequestedCourseIds
+            application.RequestedSchoolIds,
+            application.IntakeYear
         });
     }
 
@@ -76,10 +74,10 @@ public static class ApplicationsEndpoints
             a.Id,
             Student = a.Student.FullName,
             a.Status,
-            a.Semester,
-            a.Year,
+            a.IntakeYear,
             a.SubmittedAt,
             a.LastProcessedAt,
+            RequestedSchools = a.RequestedSchoolIds.Count,
             MissingDocuments = a.MissingDocuments.Select(d => d.Name),
             AgentActionsCount = a.AgentLog.Count
         });
@@ -113,11 +111,10 @@ public static class ApplicationsEndpoints
                 application.ParentPhone
             },
             application.Status,
-            application.RequestedCourseIds,
-            application.ConfirmedCourseIds,
-            application.WaitlistedCourseIds,
-            application.Semester,
-            application.Year,
+            application.RequestedSchoolIds,
+            application.ConfirmedSchoolIds,
+            application.WaitlistedSchoolIds,
+            application.IntakeYear,
             application.SubmittedAt,
             application.LastProcessedAt,
             application.ResolvedAt,
@@ -157,7 +154,6 @@ public static class ApplicationsEndpoints
         if (!Enum.TryParse<DocumentType>(request.DocumentType, out var docType))
             return Results.BadRequest($"Unknown document type '{request.DocumentType}'. Valid values: {string.Join(", ", Enum.GetNames<DocumentType>())}.");
 
-        // Find existing pending document of this type, or create a new one
         var existing = application.Documents.FirstOrDefault(d => d.Type == docType && !d.IsUploaded);
 
         if (existing is not null)
@@ -176,7 +172,6 @@ public static class ApplicationsEndpoints
             });
         }
 
-        // Document type not in the list — add it as a new upload
         var newDoc = new Document
         {
             ApplicationId = id,
@@ -216,9 +211,8 @@ public record SubmitApplicationRequest(
     string StudentAddress,
     string StudentSuburb,
     string StudentPostcode,
-    List<string> RequestedCourseIds,
-    int Semester,
-    int Year,
+    List<string> RequestedSchoolIds,
+    int IntakeYear,
     string? StudentPreviousSchool = null,
     string? StudentSpecialRequirements = null
 );

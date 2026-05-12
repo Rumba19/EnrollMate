@@ -13,15 +13,15 @@ builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
 
 // ── In-memory seed data ───────────────────────────────────────────────────────
-var courses = SeedData.Courses();
-var applications = SeedData.Applications(courses);
+var schools = SeedData.Schools();
+var applications = SeedData.Applications();
 var documents = SeedData.Documents(applications);
 
-builder.Services.AddSingleton(courses);
+builder.Services.AddSingleton(schools);
 builder.Services.AddSingleton(applications);
 builder.Services.AddSingleton(documents);
 
-builder.Services.AddSingleton<ICourseRepository, MockCourseRepository>();
+builder.Services.AddSingleton<ISchoolRepository, MockSchoolRepository>();
 builder.Services.AddSingleton<IApplicationRepository, MockApplicationRepository>();
 builder.Services.AddSingleton<IDocumentRepository, MockDocumentRepository>();
 

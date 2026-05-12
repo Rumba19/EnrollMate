@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "EnrollMate API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/EnrollMate.Api/bin/Debug/net10.0/EnrollMate.Api.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/EnrollMate.Api",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5255"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "preLaunchTask": "build-api"
+    }
+  ]
+}

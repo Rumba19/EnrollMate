@@ -5,76 +5,64 @@ namespace EnrollMate.Data.Mock;
 
 public static class SeedData
 {
-    public static List<Course> Courses() =>
+    public static List<School> Schools() =>
     [
-        new Course
+        new School
         {
-            Id = "course-math10",
-            Code = "MATH10",
-            Name = "Mathematics",
-            Description = "Core mathematics for Year 10.",
-            EligibleYearLevels = [10],
-            PrerequisiteCourseIds = [],
-            Semester = 1,
-            Capacity = 30,
-            EnrolledCount = 28,
-            TeacherName = "Ms. Chen",
-            Room = "B12",
-            Schedule = "Mondays and Wednesdays 9:00am"
+            Id = "school-greenfield-secondary",
+            Name = "Greenfield Secondary College",
+            Description = "A leading secondary school serving Years 7–12 in the Greenfield district.",
+            Address = "1 College Drive",
+            Suburb = "Greenfield",
+            Postcode = "3056",
+            ContactEmail = "admin@greenfieldsecondary.edu",
+            PhoneNumber = "03 9000 1111",
+            PrincipalName = "Mr. Alan Brooks",
+            YearLevels = [7, 8, 9, 10, 11, 12],
+            ZoneSuburbs = ["Greenfield", "Maplewood", "Riverside"],
+            Capacity = 120,
+            EnrolledCount = 95
         },
-        new Course
+        new School
         {
-            Id = "course-eng10",
-            Code = "ENG10",
-            Name = "English",
-            Description = "English language and literature for Year 10.",
-            EligibleYearLevels = [10],
-            PrerequisiteCourseIds = [],
-            Semester = 1,
-            Capacity = 30,
-            EnrolledCount = 25,
-            TeacherName = "Mr. Patel",
-            Room = "A04",
-            Schedule = "Tuesdays and Thursdays 10:00am"
+            Id = "school-riverside-academy",
+            Name = "Riverside Academy",
+            Description = "A selective secondary school for Years 7–12 with a focus on STEM.",
+            Address = "45 Academy Road",
+            Suburb = "Riverside",
+            Postcode = "3057",
+            ContactEmail = "enrol@riversideacademy.edu",
+            PhoneNumber = "03 9000 2222",
+            PrincipalName = "Ms. Patricia Wong",
+            YearLevels = [7, 8, 9, 10, 11, 12],
+            ZoneSuburbs = ["Riverside", "Greenfield", "Northside"],
+            Capacity = 80,
+            EnrolledCount = 80  // full — students will be waitlisted
         },
-        new Course
+        new School
         {
-            Id = "course-sci10",
-            Code = "SCI10",
-            Name = "Science",
-            Description = "General science for Year 10.",
-            EligibleYearLevels = [10],
-            PrerequisiteCourseIds = [],
-            Semester = 1,
-            Capacity = 28,
-            EnrolledCount = 28,
-            TeacherName = "Dr. Okafor",
-            Room = "Lab 2",
-            Schedule = "Fridays 9:00am"
-        },
-        new Course
-        {
-            Id = "course-hist10",
-            Code = "HIST10",
-            Name = "Modern History",
-            Description = "Modern history elective for Year 10.",
-            EligibleYearLevels = [10, 11],
-            PrerequisiteCourseIds = [],
-            Semester = 1,
-            Capacity = 25,
-            EnrolledCount = 10,
-            TeacherName = "Ms. Torres",
-            Room = "C08",
-            Schedule = "Tuesdays 1:00pm"
+            Id = "school-northside-primary",
+            Name = "Northside Primary School",
+            Description = "A welcoming primary school serving Years K–6 in the Northside area.",
+            Address = "88 School Lane",
+            Suburb = "Northside",
+            Postcode = "3058",
+            ContactEmail = "office@northsideprimary.edu",
+            PhoneNumber = "03 9000 3333",
+            PrincipalName = "Mrs. Sandra Hill",
+            YearLevels = [1, 2, 3, 4, 5, 6],
+            ZoneSuburbs = ["Northside", "Maplewood"],
+            Capacity = 200,
+            EnrolledCount = 160
         }
     ];
 
-    public static List<Application> Applications(List<Course> courses)
+    public static List<Application> Applications()
     {
         // ── Sofia Nguyen — main demo scenario ──────────────────────────────────
-        // Year 10 student. Submitted application requesting Math, English, Science.
-        // Science is full so she will be waitlisted there.
-        // Missing: immunisation record and proof of address — agent will chase these.
+        // Year 10 student applying to Greenfield Secondary and Riverside Academy.
+        // Riverside is full — she'll be waitlisted there.
+        // Missing: immunisation record and proof of address.
         var sofiaId = "app-sofia-nguyen";
         var sofia = new Application
         {
@@ -95,9 +83,8 @@ public static class SeedData
                 Suburb = "Greenfield",
                 Postcode = "3056"
             },
-            RequestedCourseIds = ["course-math10", "course-eng10", "course-sci10"],
-            Semester = 1,
-            Year = 2026,
+            RequestedSchoolIds = ["school-greenfield-secondary", "school-riverside-academy"],
+            IntakeYear = 2026,
             Status = ApplicationStatus.Submitted,
             SubmittedAt = DateTime.UtcNow.AddHours(-2),
             Documents =
@@ -144,6 +131,7 @@ public static class SeedData
         };
 
         // ── James Obi — already confirmed overnight ────────────────────────────
+        // Applied to Greenfield Secondary — all docs present, enrolled.
         var jamesId = "app-james-obi";
         var james = new Application
         {
@@ -164,10 +152,9 @@ public static class SeedData
                 Suburb = "Greenfield",
                 Postcode = "3056"
             },
-            RequestedCourseIds = ["course-math10", "course-eng10", "course-hist10"],
-            ConfirmedCourseIds = ["course-math10", "course-eng10", "course-hist10"],
-            Semester = 1,
-            Year = 2026,
+            RequestedSchoolIds = ["school-greenfield-secondary"],
+            ConfirmedSchoolIds = ["school-greenfield-secondary"],
+            IntakeYear = 2026,
             Status = ApplicationStatus.Confirmed,
             SubmittedAt = DateTime.UtcNow.AddHours(-10),
             LastProcessedAt = DateTime.UtcNow.AddHours(-8),
@@ -222,7 +209,7 @@ public static class SeedData
                 {
                     ApplicationId = jamesId,
                     Type = AgentActionType.CheckedEligibility,
-                    Description = "Eligibility confirmed — Year 10, in zone, all prerequisites met.",
+                    Description = "Eligibility confirmed — Year 10, in zone for Greenfield Secondary College.",
                     ToolName = "CheckEligibility",
                     ToolResult = "Eligible",
                     OccurredAt = DateTime.UtcNow.AddHours(-8)
@@ -240,7 +227,7 @@ public static class SeedData
                 {
                     ApplicationId = jamesId,
                     Type = AgentActionType.ConfirmedEnrollment,
-                    Description = "Enrollment confirmed for MATH10, ENG10, HIST10.",
+                    Description = "Enrollment confirmed at Greenfield Secondary College.",
                     ToolName = "EnrollStudent",
                     ToolResult = "Enrolled",
                     StatusChangedTo = nameof(ApplicationStatus.Confirmed),
@@ -280,9 +267,8 @@ public static class SeedData
                 Postcode = "3056",
                 SpecialRequirements = "Student has an auditory processing disorder and requires front-row seating and written instructions."
             },
-            RequestedCourseIds = ["course-math10", "course-eng10"],
-            Semester = 1,
-            Year = 2026,
+            RequestedSchoolIds = ["school-greenfield-secondary"],
+            IntakeYear = 2026,
             Status = ApplicationStatus.EscalatedToStaff,
             SubmittedAt = DateTime.UtcNow.AddHours(-6),
             LastProcessedAt = DateTime.UtcNow.AddHours(-5),
@@ -319,7 +305,7 @@ public static class SeedData
                 {
                     ApplicationId = miaId,
                     Type = AgentActionType.CheckedEligibility,
-                    Description = "Eligibility confirmed — Year 10, in zone.",
+                    Description = "Eligibility confirmed — Year 10, in zone for Greenfield Secondary College.",
                     ToolName = "CheckEligibility",
                     ToolResult = "Eligible",
                     OccurredAt = DateTime.UtcNow.AddHours(-5)

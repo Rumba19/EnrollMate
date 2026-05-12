@@ -52,11 +52,11 @@ public class AgentOrchestrator(Kernel kernel, IApplicationRepository application
         $"""
         Process the following enrollment application.
 
-        Application ID : {application.Id}
-        Student        : {application.Student.FullName}, Year {application.Student.YearLevel}
-        Parent         : {application.ParentFullName} <{application.ParentEmail}>
-        Requested courses: {string.Join(", ", application.RequestedCourseIds)}
-        Semester/Year  : Semester {application.Semester}, {application.Year}
+        Application ID   : {application.Id}
+        Student          : {application.Student.FullName}, Year {application.Student.YearLevel}
+        Parent           : {application.ParentFullName} <{application.ParentEmail}>
+        Requested schools: {string.Join(", ", application.RequestedSchoolIds)}
+        Intake year      : {application.IntakeYear}
         Special requirements: {(application.Student.HasSpecialRequirements ? application.Student.SpecialRequirements : "None")}
 
         Work through the full decision flow now.

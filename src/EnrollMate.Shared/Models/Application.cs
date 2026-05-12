@@ -30,17 +30,17 @@ public class Application
     public string ParentPhone { get; set; } = string.Empty;
 
     // -------------------------------------------------------------------------
-    // Courses requested
+    // Schools requested
     // -------------------------------------------------------------------------
 
-    /// <summary>Course IDs the student wants to enroll in.</summary>
-    public List<string> RequestedCourseIds { get; set; } = [];
+    /// <summary>School IDs the family is applying to.</summary>
+    public List<string> RequestedSchoolIds { get; set; } = [];
 
-    /// <summary>Course IDs successfully confirmed after agent processing.</summary>
-    public List<string> ConfirmedCourseIds { get; set; } = [];
+    /// <summary>School IDs confirmed after agent processing.</summary>
+    public List<string> ConfirmedSchoolIds { get; set; } = [];
 
-    /// <summary>Course IDs placed on waitlist.</summary>
-    public List<string> WaitlistedCourseIds { get; set; } = [];
+    /// <summary>School IDs where student is on the waitlist.</summary>
+    public List<string> WaitlistedSchoolIds { get; set; } = [];
 
     // -------------------------------------------------------------------------
     // Documents
@@ -73,11 +73,8 @@ public class Application
     /// <summary>When the application was confirmed or resolved.</summary>
     public DateTime? ResolvedAt { get; set; }
 
-    /// <summary>Target semester (1 or 2).</summary>
-    public int Semester { get; set; }
-
-    /// <summary>Target year (e.g. 2026).</summary>
-    public int Year { get; set; } = DateTime.UtcNow.Year;
+    /// <summary>Intake year the student is enrolling for (e.g. 2026).</summary>
+    public int IntakeYear { get; set; } = DateTime.UtcNow.Year;
 
     // -------------------------------------------------------------------------
     // Agent activity
