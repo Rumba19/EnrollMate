@@ -278,7 +278,7 @@ Add the following to `appsettings.json` or environment variables, then uncomment
 ```json
 {
   "Aws": {
-    "Region": "ap-southeast-2",
+    "Region": "us-west-1",
     "BedrockModelId": "anthropic.claude-3-5-sonnet-20241022-v2:0",
     "SesFromEmail": "noreply@yourschool.edu"
   }
